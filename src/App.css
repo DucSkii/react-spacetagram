@@ -5,9 +5,17 @@
 
 .App {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 10%;
 }
 
 .title {
   margin: 30px;
+}
+
+.imageGallery {
+  display: grid;
+  grid-template-columns: repeat(3, 33%);
+  grid-gap: 10px;
 }
