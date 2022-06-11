@@ -2,3 +2,12 @@
   margin: 0;
   padding: 0;
 }
+
+.App {
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  margin: 30px;
+}
