@@ -3,6 +3,7 @@ import { Routes, Route, Link } from 'react-router-dom'
 import Home from './Pages/Home'
 import './App.css'
 import Modal from './components/Modal'
+import Liked from './Pages/Liked'
 
 /*
 - Call data from NASA API
@@ -44,6 +45,17 @@ const App = () => {
         </Link>
       </div>
       <Routes>
+        <Route
+          path='/liked'
+          element={
+            <Liked
+              setModal={setModal}
+              likeImage={likeImage}
+              unLikeImage={unLikeImage}
+              likedImages={likedImages}
+            />
+          }
+        />
         <Route
           path='/'
           element={
