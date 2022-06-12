@@ -27,7 +27,6 @@ const App = () => {
     let storedLikedImages = JSON.parse(
       localStorage.getItem('likedImages') || '[]'
     )
-    console.log('storedLikedImages', storedLikedImages)
     setLikedImages(storedLikedImages)
   }, [])
   const likeImage = (image) => {
@@ -39,13 +38,18 @@ const App = () => {
       (likedImage) => likedImage.date !== image.date
     )
     setLikedImages(filteredImages)
-    console.log('filteredImages', filteredImages)
     localStorage.setItem('likedImages', JSON.stringify(filteredImages))
   }
-  console.log('likedImages', likedImages)
+
   return (
     <div className='App'>
-      <Modal modal={modal} setModal={setModal} />
+      <Modal
+        modal={modal}
+        setModal={setModal}
+        likedImages={likedImages}
+        unLikeImage={unLikeImage}
+        likeImage={likeImage}
+      />
       <h1 className='title'>Spacetagram</h1>
       <div className='navBar'>
         <Link to='/' className='nav'>
