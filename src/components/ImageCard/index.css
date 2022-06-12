@@ -37,3 +37,11 @@
   overflow: hidden;
   mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
 }
+
+.closeButton {
+  position: fixed;
+  right: 15px;
+  top: 15px;
+  color: white;
+  cursor: pointer;
+}
