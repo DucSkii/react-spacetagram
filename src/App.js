@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Routes, Route, Link } from 'react-router-dom'
 import Home from './Pages/Home'
 import './App.css'
-// import axios from 'axios'
-// import ImageCard from './components/ImageCard'
 import Modal from './components/Modal'
 
 /*
@@ -22,36 +20,41 @@ UUID = DATE OF THE IMAGE
 
 const App = () => {
   const [modal, setModal] = useState(null)
+  const [likedImages, setLikedImages] = useState([])
 
-  // {!imagesLoaded ? (
-  //   <div>Loading Images</div>
-  // ) : (
-  //   <div className='imageGallery'>
-  //     {/* <DateFilter /> */}
-  //     {images.map((imageObject, index) => {
-  //       return (
-  //         <div key={index}>
-  //           <ImageCard
-  //             title={imageObject.title}
-  //             date={imageObject.date}
-  //             description={imageObject.description}
-  //             image={imageObject.image}
-  //             likedImages={likedImages}
-  //             likeImage={likeImage}
-  //             unLikeImage={unLikeImage}
-  //             setModal={setModal}
-  //           />
-  //         </div>
-  //       )
-  //     })}
-  //   </div>
-  // )}
+  const likeImage = (image) => {
+    setLikedImages((prevState) => [...prevState, image])
+  }
+  const unLikeImage = (image) => {
+    setLikedImages(
+      likedImages.filter((likedImage) => likedImage.date !== image.date)
+    )
+  }
+
   return (
     <div className='App'>
       <Modal modal={modal} setModal={setModal} />
       <h1 className='title'>Spacetagram</h1>
+      <div className='navBar'>
+        <Link to='/' className='nav'>
+          Home
+        </Link>
+        <Link to='/liked' className='nav'>
+          Liked
+        </Link>
+      </div>
       <Routes>
-        <Route path='/' element={<Home setModal={setModal} />} />
+        <Route
+          path='/'
+          element={
+            <Home
+              setModal={setModal}
+              likeImage={likeImage}
+              unLikeImage={unLikeImage}
+              likedImages={likedImages}
+            />
+          }
+        />
       </Routes>
     </div>
   )

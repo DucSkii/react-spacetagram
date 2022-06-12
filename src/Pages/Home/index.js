@@ -3,11 +3,10 @@ import axios from 'axios'
 import ImageCard from '../../components/ImageCard'
 import './index.css'
 
-const Home = ({ setModal }) => {
+const Home = ({ setModal, unLikeImage, likeImage, likedImages }) => {
   const [imagesLoaded, setImagesLoaded] = useState(false)
   const [images, setImages] = useState([])
   // const [dateFilter, setDateFilter] = useState([0, 0])
-  const [likedImages, setLikedImages] = useState([])
   const standardImageCount = 5
 
   useEffect(() => {
@@ -29,14 +28,6 @@ const Home = ({ setModal }) => {
       })
   }, [])
 
-  const likeImage = (image) => {
-    setLikedImages((prevState) => [...prevState, image])
-  }
-  const unLikeImage = (image) => {
-    setLikedImages(
-      likedImages.filter((likedImage) => likedImage.date !== image.date)
-    )
-  }
   return (
     <>
       {!imagesLoaded ? (

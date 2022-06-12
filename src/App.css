@@ -31,3 +31,22 @@
   grid-template-columns: repeat(3, 33%);
   grid-gap: 10px;
 }
+
+.navBar {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.nav {
+  padding: 10px 20px;
+  font-size: 22px;
+  user-select: none;
+  cursor: pointer;
+  text-decoration: none;
+  color: #000000;
+}
+
+.nav:hover {
+  transform: scale(1.2);
+  transition: all 0.3s ease-in-out;
+}
