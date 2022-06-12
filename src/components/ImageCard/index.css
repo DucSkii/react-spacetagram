@@ -3,17 +3,19 @@
   flex-direction: column;
   min-width: 100%;
   max-width: 100%;
+  width: 100%;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   border: 1px solid black;
   cursor: pointer;
-  max-height: 623px;
-  min-height: 623px;
+  height: 625px !important;
 }
 
 .imageCard > img {
   width: 100%;
-  height: 400px;
+  min-height: 50%;
+  max-height: 50%;
+  height: 50%;
   object-fit: cover;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;

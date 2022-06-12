@@ -12,9 +12,9 @@ import Modal from './components/Modal'
 - Create sharable links for each image
 - Date filter
 - Include local storaging
-API 20: https://api.nasa.gov/planetary/apod?count=20&thumbs=true&api_key=mDEcaIVsADm4IjeqttbyEn5W1eAD336EHkTbKlIt
-API FILTER: https://api.nasa.gov/planetary/apod?start_date=2020-1-1&end_date=2020-2-1&thumbs=true&api_key=mDEcaIVsADm4IjeqttbyEn5W1eAD336EHkTbKlIt
-API 1 IMAGE TEST: https://api.nasa.gov/planetary/apod?count=1&thumbs=true&api_key=mDEcaIVsADm4IjeqttbyEn5W1eAD336EHkTbKlIt
+API 20: https://api.nasa.gov/planetary/apod?count=20&thumbs=True&api_key=mDEcaIVsADm4IjeqttbyEn5W1eAD336EHkTbKlIt
+API FILTER: https://api.nasa.gov/planetary/apod?start_date=2020-1-1&end_date=2020-2-1&thumbs=True&api_key=mDEcaIVsADm4IjeqttbyEn5W1eAD336EHkTbKlIt
+API 1 IMAGE TEST: https://api.nasa.gov/planetary/apod?count=1&thumbs=True&api_key=mDEcaIVsADm4IjeqttbyEn5W1eAD336EHkTbKlIt
 UUID = DATE OF THE IMAGE
 */
 
@@ -29,7 +29,7 @@ const App = () => {
   useEffect(() => {
     axios
       .get(
-        `https://api.nasa.gov/planetary/apod?count=${standardImageCount}&thumbs=true&api_key=mDEcaIVsADm4IjeqttbyEn5W1eAD336EHkTbKlIt`
+        `https://api.nasa.gov/planetary/apod?count=${standardImageCount}&thumbs=True&api_key=mDEcaIVsADm4IjeqttbyEn5W1eAD336EHkTbKlIt`
       )
       .then((res) => {
         const imagesArray = res.data
@@ -44,44 +44,29 @@ const App = () => {
         setImagesLoaded(true)
       })
   }, [])
-
+  console.log('images', images)
   return (
     <div className={`App ${modal ? 'open' : ''}`}>
-      <Modal modal={modal} setModal={setModal}/>
+      <Modal modal={modal} setModal={setModal} />
       <h1 className='title'>Spacetagram</h1>
       {!imagesLoaded ? (
         <div>Loading Images</div>
       ) : (
         <div className='imageGallery'>
           {/* <DateFilter /> */}
-          <ImageCard
-            title={images[0].title}
-            date={images[0].date}
-            description={images[0].description}
-            image={images[0].image}
-            setModal={setModal}
-          />
-          <ImageCard
-            title={images[0].title}
-            date={images[0].date}
-            description={images[0].description}
-            image={images[0].image}
-            setModal={setModal}
-          />
-          <ImageCard
-            title={images[0].title}
-            date={images[0].date}
-            description={images[0].description}
-            image={images[0].image}
-            setModal={setModal}
-          />
-          <ImageCard
-            title={images[0].title}
-            date={images[0].date}
-            description={images[0].description}
-            image={images[0].image}
-            setModal={setModal}
-          />
+          {images.map((imageObject, index) => {
+            return (
+              <div key={index}>
+                <ImageCard
+                  title={imageObject.title}
+                  date={imageObject.date}
+                  description={imageObject.description}
+                  image={imageObject.image}
+                  setModal={setModal}
+                />
+              </div>
+            )
+          })}
         </div>
       )}
     </div>

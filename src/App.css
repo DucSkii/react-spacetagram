@@ -26,6 +26,7 @@
 }
 
 .imageGallery {
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 33%);
   grid-gap: 10px;

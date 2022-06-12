@@ -1,4 +1,6 @@
 import React from 'react'
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
+import FavoriteIcon from '@mui/icons-material/Favorite'
 import './index.css'
 
 const ImageCard = ({ title, date, description, image, setModal }) => {

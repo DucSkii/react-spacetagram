@@ -6,7 +6,6 @@ import './index.css'
 const Modal = ({ modal, setModal }) => (
   <MaterialModal
     className='modal'
-    disableBackdropClick
     open={modal ? true : false}
     onClose={() => setModal(null)}
   >
