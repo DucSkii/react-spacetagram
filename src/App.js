@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 import Home from './Pages/Home'
 import './App.css'
@@ -23,15 +23,26 @@ const App = () => {
   const [modal, setModal] = useState(null)
   const [likedImages, setLikedImages] = useState([])
 
+  useEffect(() => {
+    let storedLikedImages = JSON.parse(
+      localStorage.getItem('likedImages') || '[]'
+    )
+    console.log('storedLikedImages', storedLikedImages)
+    setLikedImages(storedLikedImages)
+  }, [])
   const likeImage = (image) => {
     setLikedImages((prevState) => [...prevState, image])
+    localStorage.setItem('likedImages', JSON.stringify([...likedImages, image]))
   }
   const unLikeImage = (image) => {
-    setLikedImages(
-      likedImages.filter((likedImage) => likedImage.date !== image.date)
+    let filteredImages = likedImages.filter(
+      (likedImage) => likedImage.date !== image.date
     )
+    setLikedImages(filteredImages)
+    console.log('filteredImages', filteredImages)
+    localStorage.setItem('likedImages', JSON.stringify(filteredImages))
   }
-
+  console.log('likedImages', likedImages)
   return (
     <div className='App'>
       <Modal modal={modal} setModal={setModal} />

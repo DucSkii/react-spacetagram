@@ -17,7 +17,6 @@ const ImageCard = ({
   const [liked, setLiked] = useState(false)
 
   useEffect(() => {
-    console.log('runninig')
     if (checkForMatch(likedImages, date)) {
       setLiked(true)
     } else {
