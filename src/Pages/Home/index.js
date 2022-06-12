@@ -4,17 +4,15 @@ import ImageCard from '../../components/ImageCard'
 import DateFilter from '../../components/DateFilter'
 import './index.css'
 
-// API 20: https://api.nasa.gov/planetary/apod?count=20&thumbs=True&api_key=mDEcaIVsADm4IjeqttbyEn5W1eAD336EHkTbKlIt
-// API FILTER: https://api.nasa.gov/planetary/apod?start_date=2020-1-1&end_date=2020-2-1&thumbs=True&api_key=mDEcaIVsADm4IjeqttbyEn5W1eAD336EHkTbKlIt
-// API 1 IMAGE TEST: https://api.nasa.gov/planetary/apod?count=1&thumbs=True&api_key=mDEcaIVsADm4IjeqttbyEn5W1eAD336EHkTbKlIt
-
 const Home = ({ setModal, unLikeImage, likeImage, likedImages }) => {
   const [imagesLoaded, setImagesLoaded] = useState(false)
   const [images, setImages] = useState([])
   const [dateFilter, setDateFilter] = useState([])
-  const standardImageCount = 5
+  const standardImageCount = 20
 
   useEffect(() => {
+    setImages([])
+    setImagesLoaded(false)
     let apiRequest = dateFilter.length
       ? `https://api.nasa.gov/planetary/apod?start_date=${dateFilter[0]}-${
           dateFilter[1]
@@ -45,25 +43,27 @@ const Home = ({ setModal, unLikeImage, likeImage, likedImages }) => {
       {!imagesLoaded ? (
         <div>Loading Images</div>
       ) : (
-        <div className='imageGallery'>
-          <DateFilter />
-          {images.map((imageObject, index) => {
-            return (
-              <div key={index}>
-                <ImageCard
-                  title={imageObject.title}
-                  date={imageObject.date}
-                  description={imageObject.description}
-                  image={imageObject.image}
-                  likedImages={likedImages}
-                  likeImage={likeImage}
-                  unLikeImage={unLikeImage}
-                  setModal={setModal}
-                />
-              </div>
-            )
-          })}
-        </div>
+        <>
+          <DateFilter setDateFilter={setDateFilter} />
+          <div className='imageGallery'>
+            {images.map((imageObject, index) => {
+              return (
+                <div key={index}>
+                  <ImageCard
+                    title={imageObject.title}
+                    date={imageObject.date}
+                    description={imageObject.description}
+                    image={imageObject.image}
+                    likedImages={likedImages}
+                    likeImage={likeImage}
+                    unLikeImage={unLikeImage}
+                    setModal={setModal}
+                  />
+                </div>
+              )
+            })}
+          </div>
+        </>
       )}
     </>
   )
