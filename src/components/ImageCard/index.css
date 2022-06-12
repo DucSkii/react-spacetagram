@@ -40,10 +40,15 @@
   mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
 }
 
-.closeButton {
-  position: fixed;
-  right: 15px;
-  top: 15px;
-  color: white;
+.icon {
+  position: absolute;
+  right: 0;
+  margin: 20px 20px 0px 0px;
+  color: #ffffff;
   cursor: pointer;
+}
+
+.icon:hover {
+  transform: scale(1.1);
+  transition: all 0.2s ease-in-out;
 }

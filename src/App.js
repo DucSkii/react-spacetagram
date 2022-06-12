@@ -21,7 +21,7 @@ UUID = DATE OF THE IMAGE
 const App = () => {
   const [imagesLoaded, setImagesLoaded] = useState(false)
   const [images, setImages] = useState([])
-  const [dateFilter, setDateFilter] = useState([0, 0])
+  // const [dateFilter, setDateFilter] = useState([0, 0])
   const [likedImages, setLikedImages] = useState([])
   const [modal, setModal] = useState(null)
   const standardImageCount = 5
@@ -44,7 +44,16 @@ const App = () => {
         setImagesLoaded(true)
       })
   }, [])
-  console.log('images', images)
+
+  const likeImage = (image) => {
+    setLikedImages((prevState) => [...prevState, image])
+  }
+  const unLikeImage = (image) => {
+    setLikedImages(
+      likedImages.filter((likedImage) => likedImage.date !== image.date)
+    )
+  }
+console.log('likedImages', likedImages)
   return (
     <div className={`App ${modal ? 'open' : ''}`}>
       <Modal modal={modal} setModal={setModal} />
@@ -62,6 +71,9 @@ const App = () => {
                   date={imageObject.date}
                   description={imageObject.description}
                   image={imageObject.image}
+                  likedImages={likedImages}
+                  likeImage={likeImage}
+                  unLikeImage={unLikeImage}
                   setModal={setModal}
                 />
               </div>
