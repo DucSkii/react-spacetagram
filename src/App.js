@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './App.css'
 import axios from 'axios'
 import ImageCard from './components/ImageCard'
+import Modal from './components/Modal'
 
 /*
 - Call data from NASA API
@@ -22,7 +23,9 @@ const App = () => {
   const [images, setImages] = useState([])
   const [dateFilter, setDateFilter] = useState([0, 0])
   const [likedImages, setLikedImages] = useState([])
+  const [modal, setModal] = useState(null)
   const standardImageCount = 5
+
   useEffect(() => {
     axios
       .get(
@@ -43,7 +46,8 @@ const App = () => {
   }, [])
 
   return (
-    <div className='App'>
+    <div className={`App ${modal ? 'open' : ''}`}>
+      <Modal modal={modal} setModal={setModal}/>
       <h1 className='title'>Spacetagram</h1>
       {!imagesLoaded ? (
         <div>Loading Images</div>
@@ -55,24 +59,28 @@ const App = () => {
             date={images[0].date}
             description={images[0].description}
             image={images[0].image}
+            setModal={setModal}
           />
           <ImageCard
             title={images[0].title}
             date={images[0].date}
             description={images[0].description}
             image={images[0].image}
+            setModal={setModal}
           />
           <ImageCard
             title={images[0].title}
             date={images[0].date}
             description={images[0].description}
             image={images[0].image}
+            setModal={setModal}
           />
           <ImageCard
             title={images[0].title}
             date={images[0].date}
             description={images[0].description}
             image={images[0].image}
+            setModal={setModal}
           />
         </div>
       )}

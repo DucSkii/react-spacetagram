@@ -1,6 +1,14 @@
 .imageCard {
-  background-color: grey;
-  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+  max-width: 100%;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border: 1px solid black;
+  cursor: pointer;
+  max-height: 623px;
+  min-height: 623px;
 }
 
 .imageCard > img {
@@ -15,6 +23,7 @@
 .imageCard > h2 {
   padding: 5px 10px;
   user-select: none;
+  overflow-wrap: break-word;
 }
 
 .imageCard > p {
@@ -23,9 +32,8 @@
 }
 
 .description {
-  cursor: default;
   user-select: none;
-  height: 125px;
-  margin-bottom: 15px;
+  height: 100%;
+  overflow: hidden;
   mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
 }
