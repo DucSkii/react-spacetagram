@@ -4,6 +4,6 @@ A website that displays picures of the day taken by NASA.
 
 Link to deployed project: https://react-spacetagram.web.app/
 
-![Alt Text]([https://i.gyazo.com/44fc99f8ce0594f90243e752f1b4c365.png](https://i.gyazo.com/fd3df119802e15e2a3345d7aebaca8bd.jpg))
+![Alt Text](https://i.gyazo.com/fd3df119802e15e2a3345d7aebaca8bd.jpg)
 
 To install the code please clone the repository and run "npm install" to get all the dependencies. Run "npm run start" to host the application on your localhost.
